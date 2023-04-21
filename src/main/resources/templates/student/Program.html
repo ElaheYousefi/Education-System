@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Student Program
+                            <br>
+                            <br>
+                        </h3>
+                        <form th:action="@{/registration/getProgram}" th:object="${registration}" method="post">
+                            <table width="98%" border="1">
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    select student:
+                                                </td>
+                                                <td>
+                                                   <select th:field="*{id.studentId}" onblur="send()" class="form-control">
+                                                       <option th:each="student: ${students}" th:value="${student.stdCode}" th:text="${student.name}+ ' '+ ${student.family}"></option>
+                                                   </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col"> student name</th>
+                                                    <th scope="col"> lecture name </th>
+                                                    <th scope="col"> teacher name </th>
+                                                    <th scope="col"> operation </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="registration:${registrations}">
+                                                    <td th:text="${registration.student.name}+ ' '+ ${registration.student.family}"></td>
+                                                    <td th:text="${registration.lecture.name}"></td>
+                                                    <td th:text="${registration.teacher.name}+ ' '+ ${registration.teacher.family}"></td>
+                                                    <td>
+
+                                                       <a class="button" th:data-teacher="${registration.teacher.teachId}" th:data-lecture="${registration.lecture.lectId}"
+                                                                th:data-student="${registration.student.stdCode}"
+                                                                onclick="goPoll(this.getAttribute('data-teacher'), this.getAttribute('data-lecture'), this.getAttribute('data-student'))">polling</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <input class="button" type="submit" id="elem1" style="display: none" name="program" value="Program"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="submit" class="button" name="polling" value="Polling" id="elem2" style="display: none"/>
+                            <input  th:field="*{id.lectureId}" id="lectElm" style="display: none"/>
+                            <input th:field="*{id.teacherId}" id="teachElm" style="display: none"/>
+                            <input th:field="*{id.studentId}" id="stdElm" style="display: none"/>
+                        </form>
+
+                        <script th:inline="javascript">
+                            function send(){
+                                document.all["elem1"].click();
+                            }
+
+                            function goPoll(arg1, arg2, arg3){
+                                document.all["teachElm"].value= arg1;
+                                document.all["lectElm"].value= arg2;
+                                document.all["stdElm"].value= arg3;
+                                document.all["elem2"].click();
+
+                            }
+                        </script>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+</body>
+
+</html>

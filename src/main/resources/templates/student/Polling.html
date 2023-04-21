@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Polling
+                            <br>
+                            <br>
+                        </h3>
+                        <form th:action="@{/poll/save}" method="post" th:object="${polling}">
+                            <table width="98%" border="1">
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                            <!--<thead class="thead-light">-->
+                                                <!--<tr>-->
+                                                    <!--<td style="font-weight: bold">-->
+                                                        <!--teacher:-->
+                                                    <!--</td>-->
+                                                    <!--<td th:text="${polling.id.teacherId}" align="left"></td>-->
+                                                    <!--<td style="font-weight: bold">-->
+                                                        <!--student:-->
+                                                    <!--</td>-->
+                                                    <!--<td th:text="${polling.id.studentId}" align="left"></td>-->
+                                                    <!--<td style="font-weight: bold">-->
+                                                        <!--lecture:-->
+                                                    <!--</td>-->
+                                                    <!--<td th:text="${polling.id.lectureId}" align="left"/>-->
+                                                <!--</tr>-->
+                                            <!--</thead>-->
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <td style="font-weight: bold">
+                                                        teacher:
+                                                    </td>
+                                                    <td>
+                                                          <input type="text" th:field="*{id.teacherId}" align="left" readonly="readonly" style="display: block;"/>
+                                                    </td>
+                                                    <td style="font-weight: bold">
+                                                        student:
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" th:field="*{id.studentId}" align="left" readonly="readonly" style="display: block;">
+                                                    </td>
+                                                    <td style="font-weight: bold">
+                                                        lecture:
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" th:field="*{id.lectureId}" align="left" readonly="readonly" style="display: block;"/>
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="table">
+                                <tr>
+                                    <td>Teaching quality:</td>
+                                    <td>
+                                        <input type="radio" th:field="*{teachingQuality}" th:value="4"> excellent</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{teachingQuality}" th:value="3"> very good</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{teachingQuality}" th:value="2"> good</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{teachingQuality}" th:value="1"> weak</input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Behaviour:</td>
+                                    <td>
+                                        <input type="radio" th:field="*{behaviour}" th:value="4"> excellent</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{behaviour}" th:value="3"> very good</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{behaviour}" th:value="2"> good</input>
+                                    </td>
+                                    <td>
+                                        <input type="radio" th:field="*{behaviour}" th:value="1"> weak</input>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <input class="button" type="submit" style="width: 63px" align="center"/>
+                                    </td>
+                                </tr>
+                            </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+a.text-dark:hover .card-body {
+    color: #00aae7 !important;
+}
+
+.validation {
+    margin-top: 10px;
+    color: #e8200e;
+    font-size: 14px;
+}
+
+.validation:before {
+    content: '*';
+    margin-right: 3px;
+}
+
+body {
+    margin: 0;
+}
+
+
+.content {
+
+    display:inline-block;
+    width: 100%;
+}
+
+.button {
+    background-color: #04AA6D;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover {
+    background-color:#218838;
+    color: white;
+}
+
+.button1 {
+    background-color: #c74c58;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.pure-menu-heading {
+    color: #308d46;
+    /*border: double;*/
+}
+
+.custom-display {
+    /* To limit the menu width to
+    the content of the menu: */
+    display: inline-block;
+    /*width: 500px;*/
+    margin: auto;
+    /*border: 3px solid #73AD21;*/
+}
+
+html,
+body {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.body {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+}
+
+.body .menu {
+    width: 200px;
+}
+
+.body .content {
+    flex: 1;
+}
+
+.scroll-holder {
+    position: relative;
+}
+
+.scroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.test {
+    height: 1000px;
+}
+
+.validation{
+    text-align: center;
+    text-transform: uppercase;
+    color: #c82333;
+}
+
+

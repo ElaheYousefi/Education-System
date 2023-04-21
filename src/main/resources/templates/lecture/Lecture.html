@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Lecture Information
+                            <br>
+                            <br>
+                        </h3>
+                        <!--<h3 align="left">-->
+                            <!--<a class="button" style="width: 100px" th:href="@{/user/new}">-->
+                                <!--new-->
+                            <!--</a>-->
+                        <!--</h3>-->
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">lecture code</th>
+                                <th scope="col">name</th>
+                                <th scope="col">teacher name</th>
+                                <th scope="col">type</th>
+                                <th scope="col">unit</th>
+                                <th scope="col">fee</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="lecture : ${lectures}">
+
+                                <td th:text="${lecture.getLectId()}"></td>
+                                <td th:text="${lecture.getName()}"></td>
+                                <td>
+                                    <th:block th:each="teacher : ${lecture.getTeachers()}">
+                                        <div th:text="${teacher.getName()+ ' '+ teacher.getFamily()}"></div>
+                                    </th:block>
+                                </td>
+                                <td th:text="${lecture.getLectType()}"></td>
+                                <td th:text="${lecture.getUnit()}"></td>
+                                <td th:text="${lecture.getFee()}"></td>
+                                <!--<td>-->
+                                <!--<a th:href="@{/user/getEdit/{id} (id=${userr.getUserCode()})}" style="width: 80px"><button class="btn btn-success">ویرایش</button></a>-->
+                                <!--<a th:href="@{/user/delete/{id} (id=${userr.getUserCode()})}" style="width: 80px"><button class="btn btn-delete">حذف</button></a>-->
+                                <!--</td>-->
+
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+
+</body>
+</html>

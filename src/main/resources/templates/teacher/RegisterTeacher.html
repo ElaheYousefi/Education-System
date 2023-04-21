@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Teacher Information
+                            <br>
+                            <br>
+                        </h3>
+                        <form th:action="@{/teacher/save}" th:object="${teacher}" method="post">
+                            <table width="50%" border="1" align="center">
+                                <tr>
+                                    <td>teacher code:</td>
+                                    <td><input type="text" th:field="*{teachId}" readonly="readonly"/></td>
+                                </tr>
+                                <tr>
+                                    <td align="left">name:</td>
+                                    <td align="left"><input type="text" th:field="*{name}"/></td>
+                                </tr>
+                                <tr>
+                                    <td align="left">family:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{family}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">melli code:</td>
+                                    <td>
+                                        <input type="text" th:field="*{melliCode}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>step:</td>
+                                    <td><input type="text" th:field="*{grade}"></td>
+                                </tr>
+                                <tr>
+                                    <td>course:</td>
+                                    <td><input type="text" th:field="*{course}"/></td>
+                                </tr>
+                                <tr>
+                                    <td>department:</td>
+                                    <td>
+                                        <input type="text" th:field="*{department}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="submit" class="button" style="width:63px" align="center"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+</body>
+</html>

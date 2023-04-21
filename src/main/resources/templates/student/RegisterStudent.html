@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Student Information
+                            <br>
+                            <br>
+                        </h3>
+                        <form th:action="@{/student/save}" th:object="${student}" method="post">
+                            <table width="50%" align="center" border="1">
+                                <tr>
+                                    <td align="left">student code:</td>
+                                    <!--<td th:text="${student.getStdCode()}" align="left"/>-->
+                                    <td>
+                                        <input type="text" style="display: block;" th:field="*{stdCode}" readonly="readonly"/>
+                                        <!--<input type="text" style="display: block;" th:field="*{stdCode}" disabled="disabled"/>-->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">name:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{name}">
+                                        <div class="validation>"
+                                             th:if="${#fields.hasErrors('name')}"
+                                             th:class="${#fields.hasErrors('name')}? validation"
+                                             th:errors="*{name}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">family:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{family}">
+                                        <div class="validation>"
+                                             th:if="${#fields.hasErrors('family')}"
+                                             th:class="${#fields.hasErrors('family')}? validation"
+                                             th:errors="*{family}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">melli code:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{melliCode}">
+                                        <div class="validation>"
+                                             th:if="${#fields.hasErrors('melliCode')}"
+                                             th:class="${#fields.hasErrors('melliCode')}? validation"
+                                             th:errors="*{melliCode}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">course:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{course}">
+                                        <div class="validation>"
+                                             th:if="${#fields.hasErrors('course')}"
+                                             th:class="${#fields.hasErrors('course')}? validation"
+                                             th:errors="*{course}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">department:</td>
+                                    <td align="left">
+                                        <input type="text" th:field="*{department}">
+                                        <div class="validation>"
+                                             th:if="${#fields.hasErrors('department')}"
+                                             th:class="${#fields.hasErrors('department')}? validation"
+                                             th:errors="*{department}">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">picture:</td>
+                                    <td align="left"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input class="button" type="submit" style="width: 63px" align="center"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+</body>
+</html>

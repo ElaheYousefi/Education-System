@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+    <div class="wrapper">
+        <div th:replace="fragment/layout::header"></div>
+        <div class="body">
+            <div class="menu scroll-holder">
+                <div class="scroll">
+                    <div th:replace="fragment/layout::menu"></div>
+                </div>
+            </div>
+            <div class="content scroll-holder">
+                <div>
+                    <ul>
+                        <li class="content">
+                            <h3 align="center">
+                                <br>
+                                Registration
+                                <br>
+                                <br>
+                            </h3>
+                            <form th:action="@{/registration/doRegister}" method="post">
+                                <table width="98%" border="1">
+                                    <tr>
+                                        <td>
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">lecture name</th>
+                                                        <th scope="col">teacher name</th>
+                                                        <!--<th scope="col">class time</th>-->
+                                                        <!--<th scope="col">exam time</th>-->
+                                                        <th scope="col">lecture type</th>
+                                                        <th scope="col">unit</th>
+                                                        <th scope="col">fee</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="group: ${groups}" th:data-lectId="${group.getLectId()}"
+                                                        th:data-teachId="${group.getTeachers().get(0).getTeachId()}"
+                                                        onclick="select(this.getAttribute('data-lectId'),
+                                                            this.getAttribute('data-teachId'))" style="background:#84fa8e;cursor: pointer">
+                                                        <td th:text="${group.getName()}" ></td>
+                                                        <td th:text="${group.getTeachers().get(0).getName()} + ' '+ ${group.getTeachers().get(0).getFamily()}"></td>
+                                                        <td th:text="${group.getLectType()}"></td>
+                                                        <td th:text="${group.getUnit()}"></td>
+                                                        <td th:text="${group.getFee()}"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <input type="hidden" name="lectId" value="lectId" id="elem1"/>
+                                <input type="hidden" name="teacherId" value="teacherId" id="elem2"/>
+                                <input type="submit" class="button" id="elem3" style="display: none"/>
+                                <input name="studCode" th:value="${studentCode}" style="display: none"/>
+
+
+                                <script th:inline="javascript">
+                                    function select(arg1, arg2){
+                                        document.all["elem1"].value= arg1;
+                                        document.all["elem2"].value= arg2;
+                                        document.all["elem3"].click();
+                                    }
+                                </script>
+
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

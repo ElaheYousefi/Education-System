@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+     <div class="wrapper">
+        <div th:replace="fragment/layout::header"></div>
+        <div class="body">
+            <div class="menu scroll-holder">
+                <div class="scroll">
+                    <div th:replace="fragment/layout::menu"></div>
+                </div>
+            </div>
+            <div class="content scroll-holder">
+                <div>
+                    <ul>
+                        <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                        <li class="content">
+                            <h3 align="center">
+                                <br>
+                                Registration
+                                <br>
+                                <br>
+                            </h3>
+                              <form th:action="@{/registration/showLecture}" method="post">
+                                  <table width="98%" border="1">
+                                      <tr>
+                                          <td>
+                                              <table class="table">
+                                                  <tr>
+                                                      <td>student:</td>
+                                                      <td align="left">
+                                                          <select id="stdCode" name="stdCode" class="form-control" onblur="select()">
+                                                              <option value="0"></option>
+                                                              <option th:each="student: ${students}" th:text="${student.name}+' '+
+                                                              ${student.family}+ ' '+ ${student.stdCode}"
+                                                                      th:value="${student.stdCode}" ></option>
+                                                          </select>
+                                                          <br>
+                                                      </td>
+                                                  </tr>
+                                              </table>
+
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <table class="table">
+                                                  <thead class="thead-light">
+                                                      <tr>
+                                                          <th scope="col">lecture name</th>
+                                                          <th scope="col">lecture code</th>
+                                                          <!--<th scope="col">class time</th>-->
+                                                          <!--<th scope="col">exam time</th>-->
+                                                          <th scope="col">lecture type</th>
+                                                          <th scope="col">unit</th>
+                                                          <th scope="col">fee</th>
+                                                      </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr th:each="availLecture: ${availLectures}" style="background:#84fa8e;cursor: pointer"
+                                                        th:data-lectCode="${availLecture.getLectId()}"
+                                                        onclick="showGroup(this.getAttribute('data-lectCode'))">
+                                                        <td th:text="${availLecture.getName()}"></td>
+                                                        <td th:text="${availLecture.getLectId()}"></td>
+                                                        <td th:text="${availLecture.getLectType()}"></td>
+                                                        <td th:text="${availLecture.getUnit()}"></td>
+                                                        <td th:text="${availLecture.getFee()}"></td>
+                                                    </tr>
+                                                    <tr th:each="gottenlecture: ${gottenLectures}" style="background:#fa8c84">
+                                                        <td th:text="${gottenlecture.getName()}"></td>
+                                                        <td th:text="${gottenlecture.getLectId()}"></td>
+                                                        <td th:text="${gottenlecture.getLectType()}"></td>
+                                                        <td th:text="${gottenlecture.getUnit()}"></td>
+                                                        <td th:text="${gottenlecture.getFee()}"></td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                          </td>
+                                      </tr>
+                                  </table>
+
+                                    <button type="submit" name="selectStd" value="selectStd" id="elm1" style="display: none"></button>
+                                    <button type="submit" name="showGroups" value="showGroups" id="shoGElm" style="display:none"/>
+                                    <input name="lectureId" id="lectureId" style="display:none"/>
+                                    <input name="studCode" th:value="${studentCode}" style="display:none"/>
+
+                                    <script th:inline="javascript">
+                                        function select(){
+                                            document.all["elm1"].click();
+                                        }
+                                        function showGroup(arg1){
+                                            document.all["lectureId"].value= arg1;
+                                            document.all["shoGElm"].click();
+                                        }
+                                    </script>
+                                </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     </div>
+</body>
+</html>

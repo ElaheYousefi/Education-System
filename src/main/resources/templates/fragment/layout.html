@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/myStyle.css}"/>
+    <link rel="stylesheet" th:href="@{/css/pure-min.css}"/>
+    <script th:src="@{/js/jquery-3.4.1.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div th:fragment="header">
+    <div class="background-color: #2b2929; jumbotron jumbotron-fluid mb-0 border-bottom border-secondary ">
+        <h2 class="text-center">Welcome to education system</h2>
+    </div>
+</div>
+    <!--<div>-->
+        <!--<ul>-->
+            <!--<li><a class="active" th:href="@{/}">Home</a></li>-->
+            <!--<li><a th:href="@{/student}">student</a></li>-->
+            <!--<li><a th:href="@{/lecture}">lecture</a></li>-->
+            <!--<li><a th:href="@{/teacher}">teacher</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<div th:fragment="menu" >
+    <div  class=" pure-menu custom-display">
+
+        <ul class="pure-menu-list">
+
+            <li class="pure-menu-item
+                       pure-menu-has-children
+                       pure-menu-allow-hover">
+                <a href="#"
+                   class="pure-menu-link">
+                    Student
+                </a>
+
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item">
+                        <a th:href="@{/student}"
+                           class="pure-menu-link">
+                            Show List
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a th:href="@{/registration/programPage}"
+                           class="pure-menu-link">
+                            Program
+                        </a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a th:href="@{/registration}"
+                           class="pure-menu-link">
+                            Register
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pure-menu-item">
+                <a th:href="@{/teacher}"
+                   class="pure-menu-link">
+                    Teacher
+                </a>
+            </li>
+            <li class="pure-menu-item">
+                <a th:href="@{/lecture}"
+                   class="pure-menu-link">
+                    Lecture
+                </a>
+            </li>
+
+        </ul>
+</div>
+</div>
+</body>
+</html>

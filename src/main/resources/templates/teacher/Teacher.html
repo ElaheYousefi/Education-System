@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/layout::head"></div>
+
+<body>
+<div class="wrapper">
+    <div th:replace="fragment/layout::header"></div>
+
+    <div class="body">
+        <div class="menu scroll-holder">
+            <div class="scroll">
+                <div th:replace="fragment/layout::menu"></div>
+
+            </div>
+        </div>
+
+        <div class="content scroll-holder">
+            <div>
+                <ul>
+                    <!-- duplicate this as many times as needed to verify scrolling behavior -->
+                    <li class="content">
+                        <h3 align="center">
+                            <br>
+                            Teacher Information
+                            <br>
+                            <br>
+                        </h3>
+                        <h3 align="left">
+                            <a class="button" style="width: 100px" th:href="@{/teacher/newTeacher}">
+                                new
+                            </a>
+                        </h3>
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col" width="5%">teacher code</th>
+                                <th scope="col" width="10%">name family</th>
+                                <th scope="col" width="10%">melli code</th>
+                                <th scope="col" width="5%">step</th>
+                                <th scope="col" width="10%">course</th>
+                                <th scope="col" width="10%">depart</th>
+                                <th scope="col" width="25%">action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="teacher : ${teachers}">
+                                <td th:text="${teacher.getTeachId()}"></td>
+                                <td th:text="${teacher.name} + ' '+ ${teacher.family}"></td>
+                                <td th:text="${teacher.melliCode}"></td>
+                                <td th:text="${teacher.getGrade()}"></td>
+                                <td th:text="${teacher.getCourse()}"></td>
+                                <td th:text="${teacher.getDepartment()}"></td>
+                                <td>
+                                    <a th:href="@{/teacher/edit/{id} (id= ${teacher.getTeachId()})}" class="button">edit</a>
+                                    <a th:href="@{/teacher/delete/{id} (id=${teacher.getTeachId()})}" class="button1">delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <!--<li>Content Item</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="footer">footer</div>-->
+</div>
+</body>
+</html>
