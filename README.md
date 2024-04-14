@@ -8,4 +8,4 @@ It contains:
   * Facility to register lectures by students
   * Facility to poll teachers by students
   
-  This project is written in spring boot framework.
+  The project is written in spring boot framework.
